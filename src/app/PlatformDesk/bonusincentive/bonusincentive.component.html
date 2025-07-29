@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<br />
+<br />
+<br />
+<p-toast position="top-right" id="pToast">
+</p-toast>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <h1>Bonus Incentive</h1>
+    </div>
+
+    <div class="col-md-8 text-right">
+      <label for="filter" class="date-label">Filter :</label>
+      <input id="filter"
+             type="text"
+             class="form-control"
+             (keyup)="onKeyUp($event)" placeholder="Search" />
+      <label for="startDate" class="date-label">Start Date : </label>
+      <p-calendar [showIcon]="true" appendTo="body" class="bonus-calendar" [(ngModel)]="startDate">
+      </p-calendar>
+      <label for="endDate" class="date-label">End Date : </label>
+      <p-calendar [showIcon]="true" appendTo="body" class="bonus-calendar" [(ngModel)]="endDate">
+      </p-calendar>
+      <button class="btn btn-primary" (click)="dateFilter()">Search</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="incentive-table">
+      <thead>
+        <tr>
+          <th>Bidder Name</th>
+          <th>Total Amount</th>
+          <th>Total Incentive</th>
+          <th>Bonus Incentive</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="filteredIncentives.length === 0">
+          <td colspan="12" style="text-align: center;">No data found</td>
+        </tr>
+        <tr *ngFor="let incentive of filteredIncentives">
+          <td>{{incentive.bidderName}}</td>
+          <td>{{incentive.totalAmount | number:'1.2-2'}}</td>
+          <td>{{incentive.totalIncentive | number:'1.2-2'}}</td>
+          <td>{{incentive.bonusIncentive | number:'1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

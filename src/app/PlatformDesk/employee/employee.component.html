@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast"></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [baseZIndex]="10000" [appendTo]="'body'" [styleClass]="'custom-confirm-dialog'"></p-confirmDialog>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <h1>Employee Details</h1>
+    </div>
+    <div class="col-lg-4 text-right">
+      <button class="add-button" routerLink="/addemployee">Add New</button><!--(click)="onAddNewEmployee()"-->
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last  Name</th>
+          <th>Email</th>
+          <th>Mobile No.</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeData">
+          <td>{{employee.employeeFirstName}}</td>
+          <td>{{employee.employeeLastName}}</td>
+          <td>{{employee.employeeEmailAddress}}</td>
+          <td>{{employee.employeeMobileNumber}}</td>
+
+
+          <td>
+            <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-info p-mr-2" (click)="editEmployeeform(employee.employeeID)">
+            </button>
+            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeleteEmployee(employee.employeeID)">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

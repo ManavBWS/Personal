@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast">
+</p-toast>
+<div class="container-fluid">
+  <h2 class="text-left">{{ headerText }}</h2>
+  <div class="wrapper">
+    <form [formGroup]="PlatformForm" (ngSubmit)="OnSubmit()">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="col-md-6">
+              <label for="platformName">Platform Name<span style="color:red;">*</span></label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" formControlName="ProfileName" [ngClass]="{'is-invalid': formSubmitted && PlatformForm.get('ProfileName')?.invalid}" />
+              <div *ngIf="formSubmitted && PlatformForm.get('ProfileName')?.invalid" class="invalid-feedback">
+               Platform Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+            <div class="col-sm-6">
+              <button type="submit" class="save-button">Save</button>
+            </div>
+            <div class="col-sm-6" style="position: relative; left: 6pc; top: -36px;">
+              <button class="cancel" [routerLink]="'/platform'">Cancel</button>
+            </div>
+          </div>
+      
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<br />
+<br />
+<br />
+
+<p-toast position="top-right" id="pToast">
+</p-toast>
+<div class="container-fluid">
+  <h2 class="text-left">{{headerText}}</h2>
+  <div class="wrapper">
+    <form [formGroup]="ClientForm" (ngSubmit)="OnSubmit()">
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="clientName">Client Name<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="ClientName" [ngClass]="{'is-invalid': formSubmitted && ClientForm.controls.ClientName.invalid}" required />
+          <div *ngIf="formSubmitted && ClientForm.controls.ClientName.invalid" class="invalid-feedback">
+            Client Name is required.
+          </div>
+        </div>
+        <!--<div class="col-md-1"></div>-->
+        <div class="col-md-4">
+          <label for="displayName">Display Name<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="DisplayName" [ngClass]="{'is-invalid': formSubmitted && ClientForm.controls.DisplayName.invalid}" required />
+          <div *ngIf="formSubmitted && ClientForm.controls.DisplayName.invalid" class="invalid-feedback">
+            Display Name is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="refrence">Platform Refrence ID<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="PlatformClientRefID" [ngClass]="{'is-invalid': formSubmitted && ClientForm.controls.PlatformClientRefID.invalid}" required />
+          <div *ngIf="formSubmitted && ClientForm.controls.PlatformClientRefID.invalid" class="invalid-feedback">
+            Email is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-12" style=" position: relative;  left: 1pc; bottom:-36px;">
+          <button type="submit" class="btn btn-primary" style="width: 5%; border-radius: 7px; background-color: grey; ">Save</button>
+          <button type="button" class="btn btn-secondary ml-2" [routerLink]="'/client'" style=" width: 5%; border-radius: 7px; background-color: red;">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

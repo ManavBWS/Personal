@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<br />
+<br />
+<br />
+
+<p-toast position="top-right" id="pToast">
+</p-toast>
+<div class="container-fluid">
+  <h2>{{headerText}}</h2>
+  <div class="wrapper">
+    <form [formGroup]="EmployeeForm" (ngSubmit)="OnSubmit()">
+      <div class="form-group row">
+        <div class="col-md-5">
+          <label for="employeeFirstName">First Name<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="EmployeeFirstName" [ngClass]="{'is-invalid': formSubmitted && EmployeeForm.controls.EmployeeFirstName.invalid}" required />
+          <div *ngIf="formSubmitted && EmployeeForm.controls.EmployeeFirstName.invalid" class="invalid-feedback">
+            First  Name is required.
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <label for="employeeLastName">Last Name<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="EmployeeLastName" [ngClass]="{'is-invalid': formSubmitted && EmployeeForm.controls.EmployeeLastName.invalid}" required />
+          <div *ngIf="formSubmitted && EmployeeForm.controls.EmployeeLastName.invalid" class="invalid-feedback">
+            Last Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-5">
+          <label for="employeeEmailAddress">Email<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="EmployeeEmailAddress"   [ngClass]="{'is-invalid': formSubmitted && EmployeeForm.controls.EmployeeEmailAddress.invalid}" required />
+          <div *ngIf="formSubmitted && EmployeeForm.controls.EmployeeEmailAddress.invalid" class="invalid-feedback">
+            Email is required.
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <label for="employeeMobileNumber">Mobile No.<span style="color:red;">*</span></label>
+          <input type="number" class="form-control" formControlName="EmployeeMobileNumber"  [ngClass]="{'is-invalid': formSubmitted && EmployeeForm.controls.EmployeeMobileNumber.invalid}" required/>
+          <div *ngIf="formSubmitted && EmployeeForm.controls.EmployeeMobileNumber.invalid" class="invalid-feedback">
+           Mobile No. Is Required
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="save-button">Save</button>
+      </div>
+      <div style=" position: relative; bottom: -7pc; left: -45pc; top: -57px;">
+        <button class="cancel" [routerLink]="'/employee'">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

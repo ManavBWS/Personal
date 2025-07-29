@@ -1,0 +1,157 @@
+.add-platform-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: darkslategrey;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.save-button {
+  display: block;
+  width: 9%;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: grey;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+  .save-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+
+  .save-button:not(:disabled):hover {
+    background-color: darkgrey;
+  }
+
+.cancel {
+  display: block;
+  width: 9%;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+  .cancel:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+
+  .cancel:not(:disabled):hover {
+    background-color: lightcoral;
+  }
+
+.is-invalid {
+  border-color: red;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 12px;
+}
+
+/* Responsive CSS */
+@media (max-width: 1200px) {
+  .form-control {
+    width: 80%;
+  }
+
+  .save-button,
+  .cancel {
+    width: 15%;
+  }
+}
+
+@media (max-width: 992px) {
+  .form-control {
+    width: 90%;
+  }
+
+  .save-button,
+  .cancel {
+    width: 20%;
+  }
+
+  .save-button {
+    right: 10pc;
+  }
+
+  .cancel {
+    right: -15pc;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-control {
+    width: 100%;
+  }
+
+  .save-button,
+  .cancel {
+    width: 25%;
+  }
+
+  .save-button {
+    right: 5pc;
+  }
+
+  .cancel {
+    right: -5pc;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-control {
+    width: 100%;
+  }
+
+  .save-button,
+  .cancel {
+    width: 30%;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .save-button,
+  .cancel {
+    width: 40%;
+  }
+}

@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast"></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [baseZIndex]="10000" [appendTo]="'body'" [styleClass]="'custom-confirm-dialog'"></p-confirmDialog>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Project Details</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="add-button" (click)="onAddProject()">Add New</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>Project Name</th>
+          <th>Platform Name</th>
+          <th>Department Name</th>
+          <th>Profile Name</th>
+          <th>Bidder Name</th>
+          <th>Client Name</th>
+          <th>Project Type</th>
+         
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projectData; let i=index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ project.projectName }}</td>
+          <td>{{ project.platformName }}</td>
+          <td>{{ project.departmentName }}</td>
+          <td>{{ project.profileName}}</td>
+          <td>{{project.bidderName}}</td>
+          <td>{{project.clientName}}</td>
+          <td>{{ project.typeName }}</td>
+          
+          <td>
+            <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-info p-mr-2" (click)="editProject(project.projectID)">
+            </button>
+            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeleteProject(project.projectID)">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

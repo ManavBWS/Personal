@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast">
+</p-toast>
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog id="pConfirmDialog" header="Confirm Action" [styleClass]="'custom-confirm-dialog'">
+</p-confirmDialog>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Client Management</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="add-button" (click)="onAddNewClient()">Add New</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th>Client Name</th>
+          <th>Display Name</th>
+          <th>PlatformClientRefID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of clientdata">
+          <td>{{data.clientName}}</td>
+          <td>{{data.displayName}}</td>
+          <td>{{data.platformClientRefID}}</td>
+
+          <td>
+            <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-info p-mr-2" (click)="editClientform(data.clientID)">
+            </button>
+            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeleteClient(data.clientID)">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

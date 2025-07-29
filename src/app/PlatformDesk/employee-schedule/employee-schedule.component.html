@@ -1,0 +1,134 @@
+<!-- <app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast"></p-toast>
+<div class="container-fluid" style="position:relative;top:4pc;">
+  <div class="p-field p-col-12 text-right pl-0">
+    <p-calendar [(ngModel)]="selectedDate" inputId="customDate" [showIcon]="true" appendTo="body" (ngModelChange)="onDateSelect($event)" [disabledDates]="disabledDates" styleClass="custom-calendar"></p-calendar>
+  </div>
+  <div class="col-12">
+    <h1 class="text-center" style="font-size: 30px;"><strong>Employee Schedules</strong></h1>
+  </div>
+  <div class="table-responsive">
+    <table class="custom-table">
+      <thead>
+        <tr style="font-size: 17px;">
+          <th></th>
+          <ng-container *ngFor="let day of getWeekEndDate(selectedDate); let idx = index">
+            <th>
+              {{ weekdays[idx] }}
+              <br>
+              {{ day.date | date:'M/d/yyyy' }}
+            </th>
+          </ng-container>
+          <!--<th ></th>-->
+
+        </tr>
+        <tr>
+          <th colspan="12" style="background: darkgrey; font-size: 25px; " class="text-center"><strong>Employees</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        <ng-container *ngFor="let employee of employeeData">
+          <tr>
+            <td class="employee-info">
+              <div class="employee-details">
+                <img src="/assets/images/no-image-icon-hi.png" alt="Employee Image" style="width: 30px; height: 30px; margin-right: 5px;">
+                <strong>{{ employee.employeeFirstName }} {{ employee.employeeLastName }}</strong>
+              </div>
+            </td>
+            <td *ngFor="let day of weekdayList" class="shift-cell"
+                (click)="showDialog(employee.employeeID, day.weekDayID, day.weekDayName, day.date, $event)"
+                style="cursor: pointer;"
+                cdkDropList
+                [cdkDropListData]="filteredSchedules(employee.employeeID, day.weekDayID, day.date)"
+                (cdkDropListDropped)="onDrop($event)">
+
+              <div *ngFor="let schedule of filteredSchedules(employee.employeeID, day.weekDayID, day.date)"
+                   cdkDrag
+                   [cdkDragData]="schedule"
+                   class="drag-item">
+                <div class="dialog-box">
+                  <div class="dialog-header" style="background-color: lightgrey; height: 23px !important; border-radius: 5px 5px 0px 0px; text-align:center;">
+                    <span class="employee-name">{{ schedule.employeeFirstName }}</span>
+                  </div>
+                  <div class="dialog-body" style="background-color: white; border-radius: 0px 0px 5px 5px;">
+                    <span>{{ schedule.inTime | date:'shortTime' }}</span>
+                    <span>{{ schedule.outTime | date:'shortTime' }}</span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="custom-modal" *ngIf="displayScheduleDialog" [ngStyle]="dialogStyle ">
+  <div class="triangle"></div>
+  <div class="modal-header">
+    <div type="button" class="close" aria-label="Close" (click)="closeDialog()">
+      <span aria-hidden="true">&times;</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <label class="radio-label">
+          <input type="radio" name="shiftType" [(ngModel)]="IsShift" [value]="true"> Shift
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="shiftType" [(ngModel)]="IsShift" [value]="false"> Unavailable To Work
+        </label>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="profileName">Profile Name</label>
+            <select class="form-control" (change)="onProfileSelect($event)" [(ngModel)]="selectedProfile">
+
+              <option *ngFor="let data of profileformdata" [value]="data.profileID">{{ data.profileName }}</option>
+            </select>
+          </div>
+
+          <div class="col-lg-6 pl-0">
+            <label>Projects</label>
+            <select class="form-control" [(ngModel)]="ProjectID">
+              <option *ngFor="let tats of projectdata" [value]="tats.projectID">{{tats.projectName}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="InTime">Start Time</label>
+            <div class="kk">
+              <p-autoComplete [(ngModel)]="InTime" [suggestions]="filteredShiftList" (completeMethod)="filterDayShiftTime($event)" [size]="30" [minLength]="1"></p-autoComplete>
+            </div>
+          </div>
+          <div class="col-lg-6 pl-0">
+            <label for="OutTime">End Time</label>
+            <div class="pp">
+              <p-autoComplete [(ngModel)]="OutTime" [suggestions]="filteredShiftList" (completeMethod)="filterDayShiftTime($event)" [size]="30" [minLength]="1"></p-autoComplete>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </div>
+  <div class="modal-footer">
+  
+      <div type="button" class="tt" (click)="closeDialog()">Cancel</div>
+      <button type="button" class="rr" (click)="saveSchedule(selectedDate)"><span>Save</span></button>
+      <button (click)="DeleteSchedule(ScheduleID)" type="button" *ngIf="ScheduleID !=0 " class="rr"><span>Delete</span></button>
+
+  </div>
+</div>
+
+ -->

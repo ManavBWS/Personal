@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast">
+</p-toast>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"
+                 [baseZIndex]="10000" [appendTo]="'body'" [styleClass]="'custom-confirm-dialog'">
+</p-confirmDialog>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+      <h1>Platform Management</h1>
+    </div>
+    <div class="col-lg-4 text-end">
+      <button class="add-button" (click)="onAddNewPlatform()">Add New</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th>Platform Number</th>
+          <th>Platform Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let platform of platformdata; let i = index">
+          <td>{{ i+1 }}</td>
+          <!-- <td>{{ platform.platformID }}</td> -->
+          <td>{{ platform.platformName }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info mx-2" (click)="editPlatform(platform.platformID)">
+            </button>
+            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeletePlatform(platform.platformID)">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<p-toast position="top-right" id="pToast"></p-toast>
+<div class="container-fluid _bckgimg">
+  <div class="align-item">
+    <div class="login">
+      <form [formGroup]="registerForm">
+        <h1>Register</h1>
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>First Name</label>
+            <input type="text" formControlName="FirstName"  [placeholder]="formSubmitted && registerForm.controls.FirstName.invalid ? 'First Name is required' : ''" required>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Last Name</label>
+            <input type="text" formControlName="LastName" [placeholder]="formSubmitted && registerForm.controls.LastName.invalid ? 'Last Name is required' : ''" required>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Email</label>
+            <input type="email" formControlName="Email" [placeholder]="formSubmitted && registerForm.controls.Email.invalid ? (registerForm.controls.Email.errors.pattern ? 'Invalid email format' : 'Email is required') : ''"  required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>Mobile No.</label>
+            <input type="text" formControlName="MobileNumber" [placeholder]="formSubmitted && registerForm.controls.MobileNumber.invalid ? (registerForm.controls.MobileNumber.errors.pattern ? 'Invalid phone number format' : 'Mobile No. is required') : ''" required>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Address</label>
+            <input type="text" formControlName="Address" [placeholder]="formSubmitted && registerForm.controls.Address.invalid ? 'Address is required' : ''" required>
+          </div>
+          <div class="col-md-4 form-group">
+            <label>Company Name</label>
+            <input type="text" formControlName="CompanyName"
+              [placeholder]="formSubmitted && registerForm.controls.CompanyName.invalid ? 'Company Name is required' : ''"
+              required>
+          </div>
+        </div>
+
+        <h2>Credentials</h2>
+        <div class="row">
+          <div class="col-md-4 form-group">
+            <label>Username</label>
+            <input type="text" formControlName="UserName" [placeholder]="formSubmitted && registerForm.controls.UserName.invalid && registerForm.controls.Password.touched ? 'Username is required' : ''" required>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            <label class="form-label">Password</label>
+            <span class="required-asterisk">*</span>
+            <div class="iconDispaly">
+              <input id="myInput" class="form-control" [placeholder]="formSubmitted && registerForm.controls.Password.invalid && registerForm.controls.Password.touched ? 'Password is required' : ''" formControlName="Password" [type]="fieldTextType ? 'text' : 'password'">
+              <i style="position:relative; right:24px;" [ngClass]="{'fa-eye': !fieldTextType,'fa-eye-slash': fieldTextType}"></i>
+             
+            </div>
+         
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            <label class="form-label">Confirm Password</label>
+            <span class="required-asterisk">*</span>
+            <input type="password" [type]="fieldTextType ? 'text' : 'password'" class="form-control"  formControlName="ConfirmPassword">
+            <div *ngIf="registerForm.controls.ConfirmPassword.errors && registerForm.controls.ConfirmPassword.touched" class="text-danger">
+              <div *ngIf="registerForm.controls.ConfirmPassword.errors.mustMatch">
+                Confirm Password does not match
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 text-right">
+            <button type="submit" class="save-button" (click)="onSubmit()">Save</button>
+          </div>
+          <div class="col-md-6 text-left">
+            <button class="cancel" (click)="oncancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">

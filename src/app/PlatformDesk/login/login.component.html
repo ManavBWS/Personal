@@ -1,0 +1,22 @@
+<p-toast position="top-right" id="pToast"></p-toast>
+
+<div class="container-fluid _bckgimg">
+  <div class="align-item">
+    <div class="login">
+      <form [formGroup]="loginForm">
+        <h1><strong>Log In</strong></h1>
+        <label for="username">UserName</label>
+        <input type="text" formControlName="Username" required>
+        <label for="password">Password</label>
+        <input type="password" formControlName="Password" required>
+
+        <button type="submit" (click)="onSubmit()">Log In</button>
+
+        <div class="button-container">
+          <div class="button">Forgot Password</div>
+          <div class="button text-right" (click)="onRegister()">Register</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

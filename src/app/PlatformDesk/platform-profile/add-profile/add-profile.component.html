@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+
+<p-toast position="top-right" id="pToast" >
+</p-toast>
+<div class="container-fluid">
+  <div class="col-12">
+    <h2 class="text-left">{{headerText}}</h2>
+    <div class="wrapper">
+      <form [formGroup]="PlatformProfileForm" (ngSubmit)="OnSubmit()">
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="platformprofileName" class="col-sm-3 col-form-label">Profile Name<span style="color:red;">*</span></label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" formControlName="ProfileName" id="platformprofileName" [ngClass]="{'is-invalid': formSubmitted && PlatformProfileForm.controls.ProfileName.invalid}" />
+                <div *ngIf="formSubmitted && PlatformProfileForm.controls.ProfileName.invalid" class="invalid-feedback">
+                  Profile  is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group ">
+              <label class="col-sm-3 col-form-label">Platform Name<span style="color:red;">*</span></label>
+              <div class="col-sm-9">
+                <select formControlName="PlatformID" class="form-control" [ngClass]="{'is-invalid': formSubmitted && PlatformProfileForm.controls.PlatformID.invalid}">
+                  <option *ngFor="let platform of platformList" [value]="platform.platformID">{{ platform.platformName }}</option>
+                </select>
+                <div *ngIf="formSubmitted && PlatformProfileForm.controls.PlatformID.invalid" class="invalid-feedback">
+                  Platform is required.
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="platformprofileuserName" class="col-sm-3 col-form-label">Profile User Name<span style="color:red;">*</span></label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" formControlName="ProfileUserName" id="platformprofileuserName" [ngClass]="{'is-invalid': formSubmitted && PlatformProfileForm.controls.ProfileUserName.invalid}" />
+                <div *ngIf="formSubmitted && PlatformProfileForm.controls.ProfileUserName.invalid" class="invalid-feedback">
+                  Profile User Name is required.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group">
+              <label for="platformplatformprofileRefId" class="col-sm-3 col-form-label">Platform Profile RefId<span style="color:red;">*</span></label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" formControlName="PlatformProfileRefId" id="platformplatformprofileRefId" [ngClass]="{'is-invalid': formSubmitted && PlatformProfileForm.controls.PlatformProfileRefId.invalid}" />
+                <div *ngIf="formSubmitted && PlatformProfileForm.controls.PlatformProfileRefId.invalid" class="invalid-feedback">
+                  Platform Profile RefId is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12" style="position:relative; bottom:-2pc;">
+            <div class="form-group  custom-radio-group">
+              <label class="col-sm-3 col-form-label">Is GST Applied<span style="color:red;">*</span></label>
+              <div class="col-sm-9" style="position:relative; left:-1pc;">
+                <div class="form-check form-check-inline custom-radio">
+                  <input type="radio" class="form-check-input" formControlName="IsGSTApplied" id="gstYes" [value]="true" />
+                  <label class="form-check-label" for="gstYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline custom-radio">
+                  <input type="radio" class="form-check-input" formControlName="IsGSTApplied" id="gstNo" [value]="false" />
+                  <label class="form-check-label" for="gstNo">No</label>
+                </div>
+                <div *ngIf="formSubmitted && PlatformProfileForm.controls.IsGSTApplied.invalid" class="invalid-feedback">
+                  GST Incharge selection is required.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group row">
+          <div class="col-12" style=" position: relative;  left: 1pc; bottom:-36px;">
+            <button type="submit" class="btn btn-primary mx-2" style="width: 5%; border-radius: 7px; background-color: grey; ">Save</button>
+            <button type="button" class="btn btn-secondary ml-2" [routerLink]="'/platformprofile'" style=" width: 5%; border-radius: 7px; background-color: red;">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

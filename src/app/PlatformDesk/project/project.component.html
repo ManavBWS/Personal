@@ -1,0 +1,278 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast"></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [baseZIndex]="10000" [appendTo]="'body'" [styleClass]="'custom-confirm-dialog'"></p-confirmDialog>
+<div class="container-fluid">
+  <h2 class="text-left">{{headerText}}</h2>
+  <div class="wrapper">
+    <form [formGroup]="DataForm" (ngSubmit)="OnSubmit()">
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="ProjectName">Project Name<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="ProjectName" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.ProjectName.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.ProjectName.invalid" class="invalid-feedback">
+            Project Name is required.
+          </div>
+        </div>
+        <!--<div class="col-md-1"></div>-->
+        <div class="col-md-4">
+          <label for="platform" class="d-block">Platform<span style="color:red;">*</span></label>
+          <select id="platform" class="form-control" formControlName="PlatformID" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.PlatformID.invalid}">
+            <!--<option value="" disabled>Select Platform</option>-->
+            <option *ngFor="let platform of platformdata" [value]="platform.platformID">{{platform.platformName}}</option>
+          </select>
+          <div *ngIf="formSubmitted && DataForm.controls.PlatformID.invalid" class="invalid-feedback">
+            Platform is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="department">Department<span style="color:red;">*</span></label>
+          <select id="department" class="form-control" formControlName="DepartmentID" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.DepartmentID.invalid}">
+            <option *ngFor="let department of departmentdata" [value]="department.departmentID">{{department.departmentName}}</option>
+          </select>
+          <div *ngIf="formSubmitted && DataForm.controls.DepartmentID.invalid" class="invalid-feedback">
+            Department is required.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="profile" class="d-block">Profile<span style="color:red;">*</span></label>
+          <select id="profile" class="form-control" formControlName="ProfileID" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.ProfileID.invalid}">
+            <option *ngFor="let profile of profiledatas" [value]="profile.profileID">{{profile.profileName}}</option>
+          </select>
+          <div *ngIf="formSubmitted && DataForm.controls.ProfileID.invalid" class="invalid-feedback">
+            Profile  is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="bidder">Bidder<span style="color:red;">*</span></label>
+          <select id="bidder" class="form-control" formControlName="BidderID" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.BidderID.invalid}">
+            <option *ngFor="let bidder of bidderdata" [value]="bidder.bidderID">{{bidder.bidderName}}</option>
+          </select>
+          <div *ngIf="formSubmitted && DataForm.controls.BidderID.invalid" class="invalid-feedback">
+            Bidder is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="client" class="d-block">Client<span style="color:red;">*</span></label>
+          <select id="client" class="form-control" formControlName="ClientID" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.ClientID.invalid}">
+            <option *ngFor="let client of clientdata" [value]="client.clientID">{{client.clientName}}</option>
+          </select>
+          <div *ngIf="formSubmitted && DataForm.controls.ClientID.invalid" class="invalid-feedback">
+            Client  is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="projectType" class="d-block">Project Type<span style="color:red;">*</span></label>
+          <select id="projectType" class="form-control" formControlName="ProjectTypeID" (change)="onProjectTypeChange()" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.ProjectTypeID.invalid}">
+            <!--<option value="">Select Project Type</option>-->
+            <option [disabled]="isEdited" *ngFor="let project of projecttype" [value]="project.projectTypeID">{{project.typeName}}</option>
+          </select>
+          <div *ngIf="formSubmitted && DataForm.controls.ProjectTypeID.invalid" class="invalid-feedback">
+            ProjectType Is Required
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="platformContractID" class="d-block">Platform Contract ID<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" formControlName="PlatformContractID" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.PlatformContractID.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.PlatformContractID.invalid" class="invalid-feedback">
+            Platform Contract ID Is Required
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="skills"> Skills<span style="color:red;">*</span></label>
+          <textarea type="text" class="form-control" formControlName="Skills" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.Skills.invalid}" required></textarea>
+          <div *ngIf="formSubmitted && DataForm.controls.Skills.invalid" class="invalid-feedback">
+            Skills is required.
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="DataForm.get('ProjectTypeID').value == 1" class="form-group row">
+        <div class="col-md-4">
+          <label for="amount">Amount<span style="color:red;">*</span></label>
+          <input type="number" class="form-control" formControlName="Amount" [disabled]="isEdited" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.Amount.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.Amount.invalid" class="invalid-feedback">
+            Amount Name is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="startDate">Start Date<span style="color:red;">*</span></label>
+          <input type="date" class="form-control" formControlName="StartDate" [disabled]="isEdited" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.StartDate.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.StartDate.invalid" class="invalid-feedback">
+            Start Date is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="endDate">End Date<span style="color:red;">*</span></label>
+          <input type="date" class="form-control" formControlName="EndDate" [disabled]="isEdited" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.EndDate.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.EndDate.invalid" class="invalid-feedback">
+            End Date is required.
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="DataForm.get('ProjectTypeID').value == 2" class="form-group row">
+        <div class="col-md-4">
+          <label for="amount">Amount<span style="color:red;">*</span></label>
+          <input type="number" class="form-control" formControlName="Amount" [disabled]="isEdited" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.Amount.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.Amount.invalid" class="invalid-feedback">
+            Amount is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="hours">No. of Hours<span style="color:red;">*</span></label>
+          <input type="number" class="form-control" formControlName="Hours" [disabled]="isEdited" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.Hours.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.Hours.invalid" class="invalid-feedback">
+            NUmber of Hours is required.
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="startDate">Start Date<span style="color:red;">*</span></label>
+          <input type="date" class="form-control" formControlName="StartDate" [disabled]="isEdited" [ngClass]="{'is-invalid': formSubmitted && DataForm.controls.StartDate.invalid}" required>
+          <div *ngIf="formSubmitted && DataForm.controls.StartDate.invalid" class="invalid-feedback">
+            Start Date is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-12 d-flex">
+          <button type="submit" class="btn btn-primary mr-2" style="width: 5%; border-radius: 7px; background-color: grey;">Save</button>
+          <button type="button" class="btn btn-secondary" [routerLink]="'/projectdetail'" style="width: 5%; border-radius: 7px; background-color: red;">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br />
+<br />
+<hr />
+
+
+<!--<div class="container-fluid" *ngIf="ProjectID != 0 && milestones.length > 0"  >-->
+<div class="container-fluid" *ngIf="ProjectID != 0 && ProjectTypeID===1">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Milestones</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="add-button" (click)="showMilestoneDialog(projectDetails.projectTypeID)">
+        <!--<fa-icon class="tt" [icon]="faPlus"></fa-icon>-->
+        <span>Add New</span>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="platform-table">
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of milestone">
+              <td>{{ data.amount | number:'1.2-2' }}</td>
+              <td>{{ data.startDate |date:'dd/MM/yyyy' }}</td>
+              <td>{{ data.endDate |date:'dd/MM/yyyy' }}</td>
+              <td>
+                <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"  (click)="DeleteMilestone(data.typeProjectID)">
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="ProjectID != 0 && ProjectTypeID===2">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Milestones</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="add-button"(click)="showMilestoneDialog(projectDetails.ProjectTypeID)">
+        <!--<fa-icon class="tt" [icon]="faPlus"></fa-icon>-->
+        <span>Add New</span>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="platform-table">
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>No. Of Hours</th>
+              <th>Start Date</th>              
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of milestone">
+              <td>{{ data.amount | number:'1.2-2' }}</td>
+              <td>{{ data.hours }}</td>
+              <td>{{ data.startDate |date:'dd/MM/yyyy' }}</td>
+              <td>
+                <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeleteMilestone(data.typeProjectID)">
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Milestone Dialog -->
+<p-dialog header="Create Milestone" [(visible)]="displayMilestoneDialog" [modal]="true" [style]="{width: '500px'}">
+  <form [formGroup]="milestoneForm">
+    <div class="p-grid p-fluid">
+      <div class="p-field p-col-12">
+        <label for="amount">Amount</label>
+        <input id="amount" type="number" pInputText formControlName="Amount" [ngClass]="{'is-invalid': formSubmitted && milestoneForm.controls.Amount.invalid}">
+        <div *ngIf="formSubmitted && milestoneForm.controls.Amount.invalid" class="invalid-feedback">
+         Amount is required.
+        </div>
+      </div>
+      <div class="p-field p-col-12" *ngIf="projectDetails.projectTypeID === 2">
+        <label for="hours">No. of Hours</label>
+        <input id="hours" type="number" pInputText formControlName="Hours" [ngClass]="{'is-invalid': formSubmitted && milestoneForm.controls.Hours.invalid}">
+        <div *ngIf="formSubmitted && milestoneForm.controls.Hours.invalid" class="invalid-feedback">
+          No. Of Hours is required.
+        </div>
+      </div>
+      <div class="p-field p-col-12">
+        <label for="startDate">Start Date</label>
+        <input id="startDate" type="date" pInputText formControlName="StartDate" [ngClass]="{'is-invalid': formSubmitted && milestoneForm.controls.StartDate.invalid}">
+        <div *ngIf="formSubmitted && milestoneForm.controls.StartDate.invalid" class="invalid-feedback">
+         StartDate is required.
+        </div>
+      </div>
+      <div class="p-field p-col-12" *ngIf="projectDetails.projectTypeID === 1">
+        <label for="endDate">End Date</label>
+        <input id="endDate" type="date" pInputText formControlName="EndDate" [ngClass]="{'is-invalid': formSubmitted && milestoneForm.controls.EndDate.invalid}">
+        <div *ngIf="formSubmitted && milestoneForm.controls.EndDate.invalid" class="invalid-feedback">
+          EndDate is required.
+        </div>
+      </div>
+    </div>
+    <p-footer>
+      <button style=" width: 22%; margin-right: 4px; margin-top: 6px;" pButton type="button" label="Save" icon="pi pi-check" (click)="saveMilestone()"></button>
+      <button style=" width: 22%;" pButton type="button" label="Cancel" icon="pi pi-times" (click)="displayMilestoneDialog = false"></button>
+    </p-footer>
+  </form>
+</p-dialog>

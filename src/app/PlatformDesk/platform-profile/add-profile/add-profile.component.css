@@ -1,0 +1,208 @@
+.add-platform-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+  color: darkslategrey;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 50%;
+  /*padding: 10px;*/
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: auto;
+}
+
+.save-button {
+  display: block;
+  width: 12%;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: grey;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  right: 22pc;
+  bottom: -2pc;
+}
+
+  .save-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+
+  .save-button:not(:disabled):hover {
+    background-color: darkgrey;
+  }
+.cancel {
+  display: block;
+  width: 12%;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  right: -35pc;
+  bottom: -49px;
+}
+
+  .cancel:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+
+  .cancel:not(:disabled):hover {
+    background-color: lightcoral;
+  }
+.is-invalid {
+  border-color: red;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 12px;
+}
+/* Responsive CSS */
+  @media (max-width: 1200px) {
+    .form-control {
+      width: 80%;
+    }
+
+    .save-button,
+    .cancel {
+      width: 15%;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .form-control {
+      width: 90%;
+    }
+
+    .save-button,
+    .cancel {
+      width: 20%;
+    }
+
+    .save-button {
+      right: 10pc;
+    }
+
+    .cancel {
+      right: -15pc;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .form-control {
+      width: 100%;
+    }
+
+    .save-button,
+    .cancel {
+      width: 25%;
+    }
+
+    .save-button {
+      right: 5pc;
+    }
+
+    .cancel {
+      right: -5pc;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .form-control {
+      width: 100%;
+    }
+
+    .save-button,
+    .cancel {
+      width: 30%;
+      position: relative;
+      right: auto;
+      bottom: auto;
+      margin: 10px auto;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .save-button,
+    .cancel {
+      width: 40%;
+    }
+  }
+/* Container for the custom radio buttons */
+.custom-radio-group {
+
+/*  align-items: center;*/
+}
+
+/* Custom styling for the radio buttons */
+.custom-radio {
+/*  display: inline-flex;*/
+  /*align-items: center;*/
+ /* margin-right: 20px;*/
+}
+
+  /* Hide the default radio button */
+  .custom-radio input[type="radio"] {
+    display: none;
+  }
+
+
+    .custom-radio input[type="radio"] + label::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      border-radius: 50%;
+      border: 2px solid #808080;
+      background-color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+
+    .custom-radio input[type="radio"]:checked + label::before {
+      background-color: #6e7379;
+      box-shadow: inset 0 0 0 4px #fff;
+    }
+
+  
+    .custom-radio input[type="radio"] + label:hover::before {
+      background-color: #e6f0ff;
+    }
+
+ 
+  .custom-radio label {
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+  }

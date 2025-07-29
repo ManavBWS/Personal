@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog header="Confirm Action" [styleClass]="'custom-confirm-dialog'"></p-confirmDialog>
+
+<div class="p-fluid p-m-4">
+  <div class="p-grid p-ai-center p-jc-between mb-3">
+    <div class="p-col">
+      <h2>Bidder Management</h2>
+    </div>
+    <div class="p-col text-right">
+      <button pButton type="button" label="Add New" icon="pi pi-plus" class="p-button-success" (click)="onAddNewBidder()"></button>
+    </div>
+  </div>
+
+  <p-table [value]="bidderdata" [paginator]="true" [rows]="5" [responsiveLayout]="'scroll'" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Bidder Name</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-data>
+      <tr>
+        <td>{{ data.bidderName }}</td>
+        <td>
+          <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-info p-mr-2" (click)="editBidderform(data.bidderID)"></button>
+          <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeleteBidder(data.bidderID)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

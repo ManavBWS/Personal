@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast" >
+</p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"
+  [baseZIndex]="10000" [appendTo]="'body'" [styleClass]="'custom-confirm-dialog'">
+</p-confirmDialog>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Platform Profile</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <button class="add-button" (click)="onAddNewPlatformProfile()">Add New</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <!--<th>Profile ID</th>-->
+          <th>Profile Name</th>
+          <th>Platform Name</th>
+          <th>Profile UserName</th>
+          <th>Platform Profile RefId</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of profileformdata">
+          <!--<td>{{ data.profileID }}</td>-->
+          <td>{{ data.profileName }}</td>
+          <td>{{ data.platformName }}</td>
+          <td>{{ data.profileUserName }}</td>
+          <td>{{ data.platformProfileRefId }}</td>
+
+          <td>
+            <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-info p-mr-2" (click)="editPlatformProfile(data.profileID)">
+            </button>
+            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeletePlatformProfile(data.profileID)">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<!-- <header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top shadow">
+    <div class="container-fluid">
+      <div class="navbar-nav flex-row flex-wrap">
+
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/platform']">Platform</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/department']">Department</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/platformprofile']">PlatformProfile</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/projectdetail']">Project</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/employee']">Employee</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/employeeschedule']">EmployeeSchedule</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/importexcel']">ImportExcel</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/bidder']">Bidder</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/client']">Client</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/transaction-log']">TransactionLog</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/bonusincentive']">BonusIncentive</a>
+        <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/drs']">DRS</a>
+
+      
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+            <button class="btn btn-secondary dropdown-toggle user-btn" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="pi pi-user"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="userMenu">
+              <li *ngIf="loggedInUser"><a class="dropdown-item">{{ loggedInUser }}</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><button class="dropdown-item btn-shine" (click)="logout()">Logout</button></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header> -->
+
+<nav class="navbar navbar-expand-lg" style="background-color: grey;">
+  <div class="container-fluid">
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/platform']">Platform</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/department']">Department</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/platformprofile']">PlatformProfile</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/projectdetail']">Project</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/employee']">Employee</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/employeeschedule']">EmployeeSchedule</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/importexcel']">ImportExcel</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/bidder']">Bidder</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/client']">Client</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/transaction-log']">TransactionLog</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/bonusincentive']">BonusIncentive</a>
+    <a class="navbar-brand nav-link2" [routerLinkActive]="['active']" [routerLink]="['/drs']">DRS</a>
+    
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="pi pi-user"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="userMenu">
+            <li><a class="dropdown-item" *ngIf="loggedInUser">{{ loggedInUser }}</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item btn-shine" (click)="logout()">Logout</button></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

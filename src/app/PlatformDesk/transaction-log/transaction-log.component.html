@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<br />
+<br />
+<br />
+<p-toast position="top-right" id="pToast">
+</p-toast>
+<!--<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"
+                 [baseZIndex]="10000" [appendTo]="'body'" [styleClass]="'custom-confirm-dialog'">
+</p-confirmDialog>-->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <h1>Transaction Log</h1>
+    </div>
+    <!--<div class="col-md-4 text-right">
+      <button class="add-button" (click)="onAddNewDepartment()">Add New</button>
+    </div>-->
+    <div class="col-md-8 text-right">
+      <label for="startDate" class="date-label">W/S : </label>
+      <!--<input type="date" id="startDate" [(ngModel)]="startDate" class="form-control" [ngModelOptions]="{standalone: true}" />-->
+      <p-calendar 
+                  inputId="selectedStartDate"
+                  [showIcon]="true"
+                  appendTo="body"
+                  [disabledDates]="disabledStartDates"
+                  [(ngModel)]="selectedStartDate"
+                  class="custom-calendar">
+      </p-calendar>
+      <label for="endDate" class="date-label">W/E : </label>
+      <!--<input type="date" id="endDate" [(ngModel)]="endDate" class="form-control" />-->
+      <p-calendar 
+                  inputId="selectedEndDate"
+                  [showIcon]="true"
+                  appendTo="body"
+                  [disabledDates]="disabledEndDates"
+                  [(ngModel)]="selectedEndDate"
+                  class="custom-calendar">
+      </p-calendar>
+      <button class="btn btn-primary" (click)="filterDate()">Search</button>
+    </div>
+  </div>
+
+
+
+  <div class="table-responsive">
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>WeekStartDate</th>
+          <th>Project Name</th>
+          <th>Profile Name</th>
+          <th>Bidder Name</th>
+          <th>WeekNo</th>
+          <th>Total Hours</th>
+          <th>Amount</th>
+          <th>PlatformFee</th>
+          <th>PlatformTax</th>
+          <th>PlatformGST</th>
+          <th>NetAmount</th>
+          <th>Transaction Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="transactiondata.length === 0">
+          <td colspan="12" style="text-align: center;">No data found</td>
+        </tr>
+        <tr *ngFor="let trans of transactiondata">
+          <td>{{trans.weekStartDate | date: 'dd/MM/yyyy'}}</td>
+          <td>{{trans.projectName}}</td>
+          <td>{{trans.profileName}}</td>
+          <td>{{trans.bidderName}}</td>
+          <td>{{trans.weekNo}}</td>
+          <td>{{trans.totalHours}}</td>
+          <td>{{trans.amount | number:'1.2-2'}}</td>
+          <td>{{trans.platformFee | number:'1.2-2'}}</td>
+          <td>{{trans.platformTax | number:'1.2-2'}}</td>
+          <td>{{trans.platformGST | number:'1.2-2'}}</td>
+          <td>{{trans.netAmount | number:'1.2-2'}}</td>
+          <td>{{trans.typeName}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

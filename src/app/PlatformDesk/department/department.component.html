@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<p-toast position="top-right" id="pToast">
+</p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"
+                 [baseZIndex]="10000" [appendTo]="'body'" [styleClass]="'custom-confirm-dialog'">
+</p-confirmDialog>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Department Management</h1>
+    </div>
+    <div class="col-md-4 text-end">
+      <button class="add-button" (click)="onAddNewDepartment()">Add New</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th>Department Number</th>
+          <th>Department Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let department of departmentdata">
+          <td>{{ department.departmentID }}</td>
+          <td>{{ department.departmentName }}</td>
+          <td>
+            <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-info mx-2" (click)="editDepartmentform(department.departmentID)">
+            </button>
+            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="DeleteDepartment(department.departmentID)">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

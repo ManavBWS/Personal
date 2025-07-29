@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<br />
+<br />
+<br />
+
+<p-toast position="top-right" id="pToast" >
+</p-toast>
+<div class="container-fluid">
+  <div class="col-12">
+    <h2 class="text-left">{{headerText}}</h2>
+    <div class="wrapper">
+      <form [formGroup]="BidderProfileForm" (ngSubmit)="OnSubmit()">
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="bidderprofileName" class="col-sm-3 col-form-label">Profile Name<span style="color:red;">*</span></label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" formControlName="ProfileName" id="bidderprofileName" [ngClass]="{'is-invalid': formSubmitted && BidderProfileForm.controls.ProfileName.invalid}" />
+                <div *ngIf="formSubmitted && BidderProfileForm.controls.ProfileName.invalid" class="invalid-feedback">
+                  Profile  is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group ">
+              <label class="col-sm-3 col-form-label">Platform Name<span style="color:red;">*</span></label>
+              <div class="col-sm-9">
+                <select formControlName="PlatformID" class="form-control" [ngClass]="{'is-invalid': formSubmitted && BidderProfileForm.controls.PlatformID.invalid}">
+                  <option *ngFor="let platform of platformList" [value]="platform.platformID">{{ platform.platformName }}</option>
+                </select>
+                <div *ngIf="formSubmitted && BidderProfileForm.controls.PlatformID.invalid" class="invalid-feedback">
+                  Platform is required.
+                </div>
+              </div>
+            </div>
+          </div>
+       
+          <div class="col-12" style="position:relative; bottom:-2pc;">
+            <div class="form-group  custom-radio-group">
+              <label class="col-sm-3 col-form-label">Is GST Charge<span style="color:red;">*</span></label>
+              <div class="col-sm-9" style="position:relative; left:-1pc;">
+                <div class="form-check form-check-inline custom-radio">
+                  <input type="radio" class="form-check-input" formControlName="IsGSTCharged" id="gstYes" [value]="true" />
+                  <label class="form-check-label" for="gstYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline custom-radio">
+                  <input type="radio" class="form-check-input" formControlName="IsGSTCharged" id="gstNo" [value]="false" />
+                  <label class="form-check-label" for="gstNo">No</label>
+                </div>
+                <div *ngIf="formSubmitted && BidderProfileForm.controls.IsGSTCharged.invalid" class="invalid-feedback">
+                  GST Incharge selection is required.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group row">
+          <div class="col-12" style=" position: relative;  left: 1pc; bottom:-36px;">
+            <button type="submit" class="btn btn-primary" style="width: 5%; border-radius: 7px; background-color: grey; ">Save</button>
+            <button type="button" class="btn btn-secondary ml-2" [routerLink]="'/bidderprofile'" style=" width: 5%; border-radius: 7px; background-color: red;">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

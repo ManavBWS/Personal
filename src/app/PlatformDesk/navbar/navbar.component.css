@@ -1,0 +1,92 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+  .box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+
+  .nav-link2{
+    color: white;
+  }
+
+  .nav-link2.active {
+    background-color: transparent;
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  a.nav-link2:hover {
+    font-size: 20px;
+    font-weight: 700;
+    color: lightgrey !important;
+    transition: font-size 0.9s;
+    text-decoration: none;
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+    text-align: center;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+    }
+
+
+.custom-dropdown {
+  background-color: dimgrey;
+  border-radius: 8px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: inset 16px 16px 64px #7b7b7b, inset -16px -16px 64px #ffffff;
+  margin-top: 7px;
+}
+
+ .custom-dropdown .dropdown-item {
+    color: #fff; 
+    padding: 0.75rem 1.25rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+.custom-dropdown .dropdown-item:hover {
+      background-color: darkgray; 
+      color: blanchedalmond; 
+    }
+
+.custom-dropdown .dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.15); 
+  }
+
+.btn-secondary {
+  background-color: dimgrey;
+  border: none;
+}
+
+  .btn-secondary:hover {
+    background-color: #6c757d; 
+  }
+
+.pi-user {
+  color: whitesmoke;
+  font-size: 1.25rem;
+}

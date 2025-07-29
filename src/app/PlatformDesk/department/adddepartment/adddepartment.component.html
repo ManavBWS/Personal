@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<p-toast position="top-right" id="pToast" >
+</p-toast>
+<div class="container-fluid"  >
+  <h2 class="text-left">{{headerText}}</h2>
+  <div class="wrapper">
+    <form [formGroup]="DepartmentForm" (ngSubmit)="OnSubmit()">
+      <div class="row">
+        <div class="col-md-12">
+          <div  class="form-group">
+            <div class="col-md-6">
+              <label for="departmentName">Department Name<span style="color:red;">*</span></label>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" formControlName="DepartmentName" [ngClass]="{'is-invalid': formSubmitted && DepartmentForm.get('DepartmentName').invalid}"  />
+              <div *ngIf="formSubmitted && DepartmentForm.get('DepartmentName').invalid" class="invalid-feedback">
+                Department Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <button type="submit" class="save-button">Save</button>
+          </div>
+          <div class="col-sm-6"  style="position: relative; left: 6pc; top: -36px;">
+            <button class="cancel" [routerLink]="'/department'">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
